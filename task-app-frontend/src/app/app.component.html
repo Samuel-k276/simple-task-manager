@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <span>Task Manager</span>
+  <span class="spacer"></span>
+  <ng-container *ngIf="!authService.isAuthenticated()">
+    <button mat-button routerLink="/login">Login</button>
+    <button mat-button routerLink="/register">Register</button>
+  </ng-container>
+  <ng-container *ngIf="authService.isAuthenticated()">
+    <button mat-button routerLink="/tasks">Tasks</button>
+    <button mat-button routerLink="/tasks/new">New Task</button>
+    <button mat-button (click)="logout()">Logout</button>
+  </ng-container>
+</mat-toolbar>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

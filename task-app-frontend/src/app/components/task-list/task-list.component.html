@@ -1,0 +1,22 @@
+<div class="task-list-container">
+  <h2>My Tasks</h2>
+  <button mat-raised-button color="primary" routerLink="/tasks/new">
+    <mat-icon>+</mat-icon>
+    Add New Task
+  </button>
+  <mat-list>
+    <mat-list-item *ngFor="let task of tasks">
+      <mat-checkbox 
+        [checked]="task.completed" 
+        (change)="toggleTaskStatus(task)"
+        [class.completed]="task.completed">
+      </mat-checkbox>
+      <span class="task-title" [routerLink]="['/tasks/edit', task.id]">
+        {{task.title}}
+      </span>
+      <button mat-icon-button (click)="deleteTask(task.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
+</div> 
